@@ -2,7 +2,7 @@
 
 ## Status
 
-**Draft only.** This branch moves the enhancement userscript from the former target to [floofgens.net](https://floofgens.net/). It does not publish a userscript release or change the existing master branch until reviewed.
+**Merged source, not yet released.** This port moves the enhancement userscript to [floofgens.net](https://floofgens.net/). After initial maintainer browser testing, it has been integrated into the default `master` branch. No Floofgens release tag has been published.
 
 Floofgens is operated by the original e6AI team. Its [official API documentation](https://floofgens.net/help/api) describes Danbooru-compatible endpoints and a hard limit of two API calls per second. The live post API currently returns `artist`, `copyright` and `contributor` tag groups. The script retains a **one-request-per-second** queue and its `_client` query parameter.
 
@@ -19,7 +19,7 @@ Floofgens is operated by the original e6AI team. Its [official API documentation
 
 **Do not blindly import site-specific state.** Although [Floofgens announced](https://e6ai.net/news_updates) that e6AI posts and tags were transferred, user accounts were not. Old site or Blep numeric IDs may refer to unrelated people/posts. A different `@namespace` prevents a userscript manager from automatically mixing GM state, but users should still back up their own preferences before disabling prior installs.
 
-Existing beta releases use pinned update URLs, so they will **not** silently become the Floofgens script. This branch's version and URLs point to a future `v1.3.0-beta.1` release; until such a tag is published, use the CI test artifact only.
+Existing beta releases use pinned update URLs, so they will **not** silently become the Floofgens script. The source version and update URLs point to a future `v1.3.0-beta.1` release; until such a tag is published, use a CI test artifact or build from source.
 
 ## Validation
 

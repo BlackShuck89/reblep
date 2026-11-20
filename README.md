@@ -10,10 +10,10 @@ This is independent GPLv3 derivative software, not an official re621, re6AI, e6A
 
 ## Current status
 
-**Floofgens port in development: v1.3.0-beta.1.** This work is being reviewed on [feature/floofgens-port](https://github.com/BlackShuck89/refloofgens/tree/feature/floofgens-port) and **has not been released**. The latest published version (reBlep v1.2.0-beta.8) targets the previous site, not Floofgens.
+**Floofgens beta source: v1.3.0-beta.1.** The port has been integrated into [master](https://github.com/BlackShuck89/refloofgens/tree/master) after initial maintainer browser testing. **A Floofgens release has not yet been published.** The previous release (reBlep v1.2.0-beta.8) targets the former site.
 
-- [Master branch](https://github.com/BlackShuck89/refloofgens/tree/master): last reviewed, published baseline.
-- [Releases](https://github.com/BlackShuck89/refloofgens/releases): historical versions until the Floofgens port has been verified.
+- [Master branch](https://github.com/BlackShuck89/refloofgens/tree/master): current Floofgens source and reviewed fixes.
+- [Releases](https://github.com/BlackShuck89/refloofgens/releases): currently historical builds; no Floofgens release tag yet.
 - [Pull requests](https://github.com/BlackShuck89/refloofgens/pulls): review and browser-testing progress.
 
 The code is based on the re621/re6AI 1.x architecture. Useful re621 2.x features are ported selectively rather than claiming full parity.
@@ -47,14 +47,14 @@ Install [Bun](https://bun.sh/), then run:
 ```sh
 git clone https://github.com/BlackShuck89/refloofgens.git
 cd refloofgens
-git checkout feature/floofgens-port
+git checkout master
 bun install --frozen-lockfile
 bun run compile-typescript:prod
 bun run compile-sass:prod
 bun run compose-userscript:prod
 ```
 
-The output is `build/userscript/script.user.js`. Automated checks build and exercise API response fixtures, but **live browser validation remains required**. The inherited browser-extension build is not a supported release target.
+The output is `build/userscript/script.user.js`. Automated checks build and exercise API response fixtures; additional browser testing remains welcome. The inherited browser-extension build is not a supported release target.
 
 ## Origins, licensing and credits
 
