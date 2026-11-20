@@ -1,4 +1,4 @@
-// Minimal build-time regression checks for the blep.art port.
+// Minimal build-time regression checks for the floofgens.net port.
 // These run without browser access or live API traffic.
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
@@ -14,31 +14,46 @@ const extension = JSON.parse(read("bin/extension-manifest.json"));
 const api = read("src/js/components/api/E621.ts");
 const post = read("src/js/components/post/Post.ts");
 
-assert.equal(pkg.version, "1.2.0-beta.8");
-assert.equal(pkg.name, "reblep");
-assert.equal(pkg.displayName, "reBlep");
-assert.equal(pkg.namespace, "https://github.com/BlackShuck89/re6ai-personal/blep.art");
-assert.equal(pkg.github, "https://github.com/BlackShuck89/reblep");
-assert.equal(pkg.repository.url, "git+https://github.com/BlackShuck89/reblep.git");
+assert.equal(pkg.version, "1.3.0-beta.1");
+assert.equal(pkg.name, "refloofgens");
+assert.equal(pkg.displayName, "reFloofgens");
+assert.equal(pkg.namespace, "https://github.com/BlackShuck89/refloofgens/floofgens.net");
+assert.equal(pkg.github, "https://github.com/BlackShuck89/refloofgens");
+assert.equal(pkg.repository.url, "git+https://github.com/BlackShuck89/refloofgens.git");
 assert.equal(meta.name, "%DISPLAYNAME%");
-assert(meta.updateURL.includes("v1.2.0-beta.8/script.meta.js"));
-assert(meta.downloadURL.includes("v1.2.0-beta.8/script.user.js"));
-assert(meta.icon.includes("BlackShuck89/reblep@master"));
-assert(meta.icon64.includes("BlackShuck89/reblep@master"));
+assert(meta.updateURL.includes("v1.3.0-beta.1/script.meta.js"));
+assert(meta.downloadURL.includes("v1.3.0-beta.1/script.user.js"));
+assert(meta.icon.includes("BlackShuck89/refloofgens@master"));
+assert(meta.icon64.includes("BlackShuck89/refloofgens@master"));
 assert(read("src/js/components/utility/VersionChecker.ts").includes(
-  "https://api.github.com/repos/BlackShuck89/reblep/releases"),
+  "https://api.github.com/repos/BlackShuck89/refloofgens/releases"),
   "Update checker must use the renamed repository");
-assert.match(pkg.namespace, /\/blep\.art$/);
-assert.deepEqual(meta.match, ["https://blep.art/*"]);
-assert(meta.connect.includes("blep.art"), "Blep API origin must be permitted");
+assert.match(pkg.namespace, /\/floofgens\.net$/);
+assert.deepEqual(meta.match, ["https://floofgens.net/*"]);
+assert(meta.connect.includes("floofgens.net"), "Floofgens API origin must be permitted");
+assert(meta.connect.includes("*.floofgens.net"), "Floofgens media subdomains must be permitted");
+assert(!JSON.stringify(meta).includes("blep.art"), "Former site must not be targeted");
 assert(!meta.connect.includes("static1.e6ai.net"), "Old media origin must not be required");
-assert.match(meta.updateURL, /v1\.2\.0-beta\.8/);
-assert.match(meta.downloadURL, /v1\.2\.0-beta\.8/);
-assert(extension.content_scripts.some((c) => c.matches.includes("https://blep.art/*")));
+assert.match(meta.updateURL, /v1\.3\.0-beta\.1/);
+assert.match(meta.downloadURL, /v1\.3\.0-beta\.1/);
+assert(extension.content_scripts.some((c) => c.matches.includes("https://floofgens.net/*")));
+assert(!JSON.stringify(extension).includes("blep.art"), "Extension must not target the former site");
 assert.match(api, /query\["_client"\]\s*=\s*window\["re621"\]\["useragent"\]/);
 assert.match(api, /requestRateLimit\s*=\s*1000\s*;/);
 assert.match(api, /delay\s*<\s*E621\.requestRateLimit/);
 assert(!post.includes("static1.e6ai.net"), "Preview generation must not use the retired CDN");
+assert(post.includes('url.hostname === "floofgens.net" || url.hostname.endsWith(".floofgens.net")'),
+  "Thumbnail origin discovery must allow the Floofgens CDN");
+assert("static1.floofgens.net".endsWith(".floofgens.net"),
+  "Observed Floofgens CDN must match the media-host policy");
+assert(!post.includes('"blep.art"'), "No former site media host should be used");
+const smartAlias = read("src/js/modules/misc/SmartAlias.ts");
+assert(smartAlias.includes("director|franchise|artist|contributor|character|copyright|species"),
+  "Tag prefix parsing must accept current Floofgens and historical e6AI categories");
+assert(read("src/js/components/api/DownloadQueue.ts").includes("Downloaded from floofgens.net"),
+  "Archive comments must identify Floofgens");
+assert(read("bin/common-template.js").includes("https://floofgens.net/forum_topics"),
+  "Forum link must remain on Floofgens");
 const main = read("src/js/main.ts");
 const miscellaneous = read("src/js/modules/general/Miscellaneous.ts");
 // A post-page API request must never block the global module loader.
@@ -55,7 +70,7 @@ assert(miscellaneous.includes("catch (domError)"),
 const setLinkPattern = new RegExp("/post_sets/([0-9]+)(?:[/?#]|$)");
 assert.equal("/post_sets/123".match(setLinkPattern)[1], "123");
 assert.equal("/post_sets/42?source=post".match(setLinkPattern)[1], "42");
-assert.equal("https://blep.art/post_sets/7".match(setLinkPattern)[1], "7");
+assert.equal("https://floofgens.net/post_sets/7".match(setLinkPattern)[1], "7");
 for (const tracker of ["TagTracker", "PoolTracker", "CommentTracker"]) {
   const source = read(`src/js/modules/subscriptions/${tracker}.ts`);
   assert(!source.includes("e6ai.net"), `${tracker} must not link to the retired site`);
@@ -64,7 +79,7 @@ for (const tracker of ["TagTracker", "PoolTracker", "CommentTracker"]) {
   assert.match(source, /PostData\.createSampleUrlFromMd5/);
 }
 assert(!read("src/js/modules/search/BetterSearch.ts").includes("https://e6ai.net"),
-  "Post history must stay on blep.art");
+  "Post history must stay on the current origin");
 
 
 
@@ -168,10 +183,10 @@ assert(viewer.includes('voteWrap.getAttribute("data-vote") === "1"'),
 const viewerCreate = viewer.slice(viewer.indexOf("public create (): void"),
   viewer.indexOf("private installFavoriteUpvote"));
 assert(!viewerCreate.includes("Post.getViewingPost()"),
-  "Favorite observer setup must not depend on metadata that blep can omit");
+  "Favorite observer setup must not depend on metadata a site can omit");
 assert(search.includes('ModuleController.fetchSettings<boolean>(PostViewer, "upvoteOnFavorite")'),
   "Search-page favorites must respect the same auto-upvote setting");
 assert(search.includes("PostActions.vote(post.id, 1, true)"),
   "Search-page auto-upvote must use no_unvote to avoid toggling off");
 
-console.log("blep.art domain, API, search loading, favorite voting, and download filename checks passed");
+console.log("floofgens.net domain, API, search loading, favorite voting, and download filename checks passed");

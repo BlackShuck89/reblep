@@ -129,7 +129,7 @@ export class Miscellaneous extends RE6Module {
         try {
           post = Post.getViewingPost();
         } catch (domError) {
-          // Some blep.art posts do not expose the exact embedded metadata
+          // Some site posts do not expose the exact embedded metadata
           // expected by the legacy parser. Recover only for the Reupload
           // shortcut, without making the whole userscript wait on an API call.
           const postID = Number(Page.getPageID());
@@ -139,7 +139,7 @@ export class Miscellaneous extends RE6Module {
             if (!data || !data.id) return;
             post = PostData.fromAPI(data, "0");
           } catch (apiError) {
-            console.warn("reBlep: could not prepare Reupload shortcut", domError, apiError);
+            console.warn("reFloofgens: could not prepare Reupload shortcut", domError, apiError);
             return;
           }
         }

@@ -1,4 +1,6 @@
-# Migrating re6AI Personal to blep.art
+# Historical: Migrating re6AI Personal to blep.art
+
+> Archived development notes for previous releases. **The active script now targets [floofgens.net](https://floofgens.net/); see [the current port checklist](FLOOFGENS_PORT.md).** Do not use this document as installation guidance for the current build.
 
 ## Why
 

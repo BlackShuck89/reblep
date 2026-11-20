@@ -1,5 +1,5 @@
 /**
- * reBlep — blep.art Reimagined
+ * reFloofgens — floofgens.net Reimagined
  * Script root. Better keep this place tidy.
  */
 

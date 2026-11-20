@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: Retrieve exactly the released userscript files
         env:
-          GH_REPO: BlackShuck89/reblep
+          GH_REPO: BlackShuck89/refloofgens
         run: |
           set -euo pipefail
           mkdir -p release-files
@@ -46,7 +46,7 @@ jobs:
 
       - name: Attach ZIP to existing GitHub prerelease
         env:
-          GH_REPO: BlackShuck89/reblep
+          GH_REPO: BlackShuck89/refloofgens
         run: |
           set -euo pipefail
           gh release upload "$TAG" "$ZIP_FILE" --clobber

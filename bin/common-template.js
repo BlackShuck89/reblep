@@ -9,7 +9,7 @@ window.re621 = new function () {
     repository: "%GITHUB%",
     issues: "%GITHUB%/issues/",
     releases: "%GITHUB%/releases",
-    forum: "https://blep.art/forum_topics",
+    forum: "https://floofgens.net/forum_topics",
   };
   this.useragent = "%NAME%/%VERSION%";
   this.privacy = "%PRIVACY%";

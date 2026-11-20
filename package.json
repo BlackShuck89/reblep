@@ -1,9 +1,9 @@
 {
-  "name": "reblep",
-  "displayName": "reBlep",
-  "namespace": "https://github.com/BlackShuck89/re6ai-personal/blep.art",
-  "version": "1.2.0-beta.8",
-  "description": "Independent enhancement userscript for blep.art, descended from re6AI/re621",
+  "name": "refloofgens",
+  "displayName": "reFloofgens",
+  "namespace": "https://github.com/BlackShuck89/refloofgens/floofgens.net",
+  "version": "1.3.0-beta.1",
+  "description": "Independent enhancement userscript for floofgens.net, descended from re6AI/re621",
   "author": "bitWolfy",
   "contributors": [
     "bitWolfy",
@@ -80,14 +80,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BlackShuck89/reblep.git"
+    "url": "git+https://github.com/BlackShuck89/refloofgens.git"
   },
   "license": "GPLv3",
   "bugs": {
-    "url": "https://github.com/BlackShuck89/reblep/issues"
+    "url": "https://github.com/BlackShuck89/refloofgens/issues"
   },
-  "homepage": "https://github.com/BlackShuck89/reblep",
-  "github": "https://github.com/BlackShuck89/reblep",
+  "homepage": "https://github.com/BlackShuck89/refloofgens",
+  "github": "https://github.com/BlackShuck89/refloofgens",
   "dependencies": {
     "caniuse-lite": "^1.0.30001751",
     "jquery": "^3.6.0",

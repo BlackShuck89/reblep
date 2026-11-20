@@ -821,7 +821,7 @@ export namespace PostData {
   }
 
   /**
-   * Discovers the media origin from a thumbnail already supplied by blep.art.
+   * Discovers the media origin from a thumbnail already supplied by floofgens.net.
    * Avoids baking in a fixed host that could change during site migration.
    */
   export function getMediaOrigin (): string {
@@ -841,7 +841,7 @@ export namespace PostData {
         try {
           const url = new URL(source, window.location.origin);
           if (url.protocol !== "https:") continue;
-          if (url.hostname === "blep.art" || url.hostname.endsWith(".blep.art"))
+          if (url.hostname === "floofgens.net" || url.hostname.endsWith(".floofgens.net"))
             return url.origin;
         } catch {
           // Ignore a malformed image URL.
