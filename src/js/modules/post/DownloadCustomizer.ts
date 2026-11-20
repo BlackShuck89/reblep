@@ -41,7 +41,7 @@ export class DownloadCustomizer extends RE6Module {
     super.create();
 
     // IMPORTANT: Do not parse full post metadata during initialization.
-    // Some blep.art pages expose different embedded post data. A thrown parse
+    // Some site pages expose different embedded post data. A thrown parse
     // error previously prevented the handler from ever being installed.
     // Resolve post metadata lazily, only when the user requests a download.
     this.installNativeDownloadHandler();
@@ -155,7 +155,7 @@ export class DownloadCustomizer extends RE6Module {
           return this.post;
         }
       } catch {
-        // blep may omit the original e6AI base64 #post-data payload.
+        // New sites may omit the original e6AI base64 #post-data payload.
       }
 
       const postID = Number(Page.getPageID());
@@ -167,7 +167,7 @@ export class DownloadCustomizer extends RE6Module {
         this.post = PostData.fromAPI(apiPost, "0");
         return this.post;
       } catch (error) {
-        console.error("reBlep: cannot load current post metadata for download", error);
+        console.error("reFloofgens: cannot load current post metadata for download", error);
         return null;
       }
     })();
@@ -226,12 +226,12 @@ export class DownloadCustomizer extends RE6Module {
       onerror: (error) => {
         this.downloading = false;
         Danbooru.error("Unable to download this file. See the browser console for details.");
-        console.error("reBlep: named download failed", error);
+        console.error("reFloofgens: named download failed", error);
       },
       ontimeout: (error) => {
         this.downloading = false;
         Danbooru.error("The file download timed out.");
-        console.error("reBlep: named download timed out", error);
+        console.error("reFloofgens: named download timed out", error);
       },
     });
   }

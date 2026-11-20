@@ -32,7 +32,7 @@
     "content_scripts": [
         {
             "matches": [
-                "https://blep.art/*"
+                "https://floofgens.net/*"
             ],
             "css": [],
             "js": [],
@@ -62,8 +62,8 @@
         "downloads",
         "https://api.github.com/*",
         "https://re621.app/*",
-        "https://blep.art/*",
-        "https://*.blep.art/*"
+        "https://floofgens.net/*",
+        "https://*.floofgens.net/*"
     ],
     "resources": {
         "re621_css": "style.min.css"

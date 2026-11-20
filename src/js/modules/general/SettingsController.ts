@@ -72,8 +72,8 @@ export class SettingsController extends RE6Module {
     // Create a button in the header
     this.openSettingsButton = Util.DOM.addSettingsButton({
       id: "header-button-settings",
-      name: `${Icons.get("wrench")} <span>reBlep</span>`,
-      title: "reBlep Settings",
+      name: `${Icons.get("wrench")} <span>reFloofgens</span>`,
+      title: "reFloofgens Settings",
       tabClass: "nav-re6-settings",
       attr: {
         "data-loading": "false",
@@ -1988,7 +1988,7 @@ export class SettingsController extends RE6Module {
     return new Form({ name: "conf-hotkeys", columns: 3, width: 3 }, [
       // Listing
       Form.div({
-        value: "<center><b>Note:</b> Vanilla e6AI hotkeys can be rebound <a href='/static/keyboard_shortcuts/'>here</a>.</center>",
+        value: "<center><b>Note:</b> Floofgens hotkeys can be rebound <a href='/static/keyboard_shortcuts/'>here</a>.</center>",
         width: 3,
       }),
 

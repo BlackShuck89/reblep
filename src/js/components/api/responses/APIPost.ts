@@ -42,9 +42,9 @@ interface Flags {
 }
 
 /**
- * blep.art uses Danbooru's artist/copyright/contributor categories.
- * The original re6AI build uses director/franchise for related roles.
- * Accept either response shape and normalize at the API boundary.
+ * Floofgens currently returns artist/copyright/contributor categories.
+ * The original e6AI build used director/franchise for related roles.
+ * Accept both shapes so historical data remains readable.
  */
 export interface PostTagGroups {
   general?: string[];
@@ -192,7 +192,7 @@ export namespace PostRating {
 export namespace APIPost {
 
   /**
-   * Normalize old e6AI categories and blep.art's native Danbooru categories.
+   * Normalize current Floofgens categories and historical e6AI categories.
    * In particular, missing director/franchise must not throw when artist and
    * copyright are present. Deduplicate without mutating the API response.
    */

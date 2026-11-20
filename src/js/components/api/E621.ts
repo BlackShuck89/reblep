@@ -1,4 +1,4 @@
-// Danbooru-compatible API endpoint wrapper (blep.art)
+// Danbooru-compatible API endpoint wrapper (floofgens.net)
 // Version 2.1
 
 import { Debug } from "../utility/Debug";
@@ -8,7 +8,7 @@ import { unwrapResponse } from "./responses/ResponseUnwrap";
 
 // All endpoints must be registered here.
 // Name is irrelevant, as long as it is unique.
-// Path is relative to the current blep.art origin.
+// Path is relative to the current floofgens.net origin.
 // Keep endpoint names synchronized with the aliases below.
 const ENDPOINT_DEFS: EndpointDefinition[] = [
   { name: "posts", path: "posts.json", node: "posts" },
@@ -203,8 +203,8 @@ class APIEndpoint {
    * @param hasParam Whether or not the endpoint had a parameter
    */
   private formatData<T extends APIResponse>(data: any, node: string): T[] {
-    // Current blep.art endpoints normally return { posts: [...] } or
-    // { post: {...} }, but some Danbooru versions return the value directly.
+    // Floofgens endpoints can return { posts: [...] } or { post: {...} };
+    // some compatible Danbooru versions return the value directly.
     // In the latter case, blindly reading data[node] yielded [undefined],
     // which crashed search rendering and lazy post downloads.
     return unwrapResponse<T>(data, node);
