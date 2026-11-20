@@ -17,16 +17,16 @@ const post = read("src/js/components/post/Post.ts");
 assert.equal(pkg.version, "1.3.0-beta.1");
 assert.equal(pkg.name, "refloofgens");
 assert.equal(pkg.displayName, "reFloofgens");
-assert.equal(pkg.namespace, "https://github.com/BlackShuck89/reblep/floofgens.net");
-assert.equal(pkg.github, "https://github.com/BlackShuck89/reblep");
-assert.equal(pkg.repository.url, "git+https://github.com/BlackShuck89/reblep.git");
+assert.equal(pkg.namespace, "https://github.com/BlackShuck89/refloofgens/floofgens.net");
+assert.equal(pkg.github, "https://github.com/BlackShuck89/refloofgens");
+assert.equal(pkg.repository.url, "git+https://github.com/BlackShuck89/refloofgens.git");
 assert.equal(meta.name, "%DISPLAYNAME%");
 assert(meta.updateURL.includes("v1.3.0-beta.1/script.meta.js"));
 assert(meta.downloadURL.includes("v1.3.0-beta.1/script.user.js"));
-assert(meta.icon.includes("BlackShuck89/reblep@master"));
-assert(meta.icon64.includes("BlackShuck89/reblep@master"));
+assert(meta.icon.includes("BlackShuck89/refloofgens@master"));
+assert(meta.icon64.includes("BlackShuck89/refloofgens@master"));
 assert(read("src/js/components/utility/VersionChecker.ts").includes(
-  "https://api.github.com/repos/BlackShuck89/reblep/releases"),
+  "https://api.github.com/repos/BlackShuck89/refloofgens/releases"),
   "Update checker must use the renamed repository");
 assert.match(pkg.namespace, /\/floofgens\.net$/);
 assert.deepEqual(meta.match, ["https://floofgens.net/*"]);

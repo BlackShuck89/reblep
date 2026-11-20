@@ -36,8 +36,8 @@
         "GM_removeValueChangeListener",
         "unsafeWindow"
     ],
-    "icon": "https://cdn.jsdelivr.net/gh/BlackShuck89/reblep@master/assets/icon64.png",
-    "icon64": "https://cdn.jsdelivr.net/gh/BlackShuck89/reblep@master/assets/icon64.png",
+    "icon": "https://cdn.jsdelivr.net/gh/BlackShuck89/refloofgens@master/assets/icon64.png",
+    "icon64": "https://cdn.jsdelivr.net/gh/BlackShuck89/refloofgens@master/assets/icon64.png",
     "connect": [
         "api.github.com",
         "floofgens.net",
